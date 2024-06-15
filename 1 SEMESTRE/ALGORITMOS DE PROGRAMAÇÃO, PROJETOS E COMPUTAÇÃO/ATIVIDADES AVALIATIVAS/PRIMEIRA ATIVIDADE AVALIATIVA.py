@@ -12,26 +12,22 @@ print('''
 *Ao digitar caracteres ou números decimais causará uma falha no programa.
 ==============================================================================
 ''')
-soma = numConsiderados = numDesconsiderados = ult1 = ult2 = ult3 = zeros_consecutivos = 0
+soma = numConsiderados = numDesconsiderados = ult1 = ult2 = ult3 = zerosConsecutivos = 0
 num = int(input('Digite um número para começar: '))
 while (num >= 0):
     if (num == 0):
-        if (zeros_consecutivos == 3):
-            print('----->>> Só é permitido até 3 anulações consecutivas!!! <<<-----')
+        if (zerosConsecutivos == 3):
+            print('----->>> SÓ É PERMITIDO ATÉ 3 ANULAÇÕES CONSECUTIVAS!!! <<<-----')
         elif (ult1 > 0):
-            zeros_consecutivos += 1
+            zerosConsecutivos += 1
             numDesconsiderados += 1
             soma -= ult1
-            ult1 = ult2
-            ult2 = ult3
-            ult3 = num
+            ult1, ult2, ult3 = ult2, ult3, num
     else:
-        zeros_consecutivos = 0
+        zerosConsecutivos = 0
         numConsiderados += 1
         soma += num
-        ult3 = ult2
-        ult2 = ult1
-        ult1 = num
+        ult3, ult2, ult1 = ult2, ult1, num
     num = int(input('Digite um número: '))
 print(f'''
 ====================================================
