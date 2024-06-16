@@ -1,7 +1,7 @@
 BD = {}
 #
-def liquido(bruto, imposto):
-    liquido = bruto - ((bruto * imposto) / 100)
+def liquido(bruto, faltas, imposto):
+    liquido = bruto - (((bruto * imposto) / 100) + (faltas * (fixo / 30)))
     return liquido
 def imposto(bruto):
     if (bruto < 2259.21):
@@ -14,27 +14,26 @@ def imposto(bruto):
         return 22.5
     else:
         return 27.5
-
 #
 def print_tabela_folha(chave, valor):
-    nome, cod_funcao, faltas, bruto = valor[0], valor[1], valor[2], valor[3]
+    nome, cod_funcao, faltas, bruto = valor
     #
     print('\nMATRÍCULA\tNOME\t\tCÓDIGO\t\tFALTAS\t\tSALÁRIO BRUTO\t\tIMPOSTO\t\tSALÁRIO LIQUIDO')
-    print(f'{chave}\t\t{nome}\t\t{cod_funcao}\t\t{faltas}\t\tR$ {bruto:.2f}\t\t{imposto(bruto)}%\t\tR$ {liquido(bruto, imposto(bruto)):.2f}')
+    print(f'{chave}\t\t{nome}\t\t{cod_funcao}\t\t{faltas}\t\tR$ {bruto:.2f}\t\t{imposto(bruto)}%\t\tR$ {liquido(bruto, faltas, imposto(bruto)):.2f}')
 def print_tabela_relatorio(chave, valor):
-    nome, cod_funcao, bruto = valor[0], valor[1], valor[3]
+    nome, cod_funcao, faltas, bruto = valor
     #
-    print(f'{chave}\t\t{nome}\t\t{cod_funcao}\t\tR$ {bruto:.2f}\t\tR$ {liquido(bruto, imposto(bruto)):.2f}')
+    print(f'{chave}\t\t{nome}\t\t{cod_funcao}\t\tR$ {bruto:.2f}\t\tR$ {liquido(bruto, faltas, imposto(bruto)):.2f}')
 def print_tabela_maior_salario(chave, valor):
-    nome, cod_funcao, bruto = valor[0], valor[1], valor[3]
+    nome, cod_funcao, faltas, bruto = valor
     #
     print('\nMATRÍCULA\tNOME\t\tCÓDIGO\t\tSALÁRIO BRUTO\t\tIMPOSTO\t\tSALÁRIO LIQUIDO')
-    print(f'{chave}\t\t{nome}\t\t{cod_funcao}\t\tR$ {bruto:.2f}\t\t{imposto(bruto)}%\t\tR$ {liquido(bruto, imposto(bruto)):.2f}')
+    print(f'{chave}\t\t{nome}\t\t{cod_funcao}\t\tR$ {bruto:.2f}\t\t{imposto(bruto)}%\t\tR$ {liquido(bruto, faltas, imposto(bruto)):.2f}')
 def print_tabela_maior_falta(chave, valor):
-    nome, cod_funcao, faltas, desc_falta = valor[0], valor[1], valor[2], valor[4]
+    nome, cod_funcao, faltas, bruto = valor
     #
     print('\nMATRÍCULA\tNOME\t\tCÓDIGO\t\tFALTAS\t\tDESCONTO DE FALTAS')
-    print(f'{chave}\t\t{nome}\t\t{cod_funcao}\t\t{faltas}\t\tR$ {desc_falta:.2f}')
+    print(f'{chave}\t\t{nome}\t\t{cod_funcao}\t\t{faltas}\t\tR$ {bruto - liquido(bruto, faltas, imposto(bruto)):.2f}')
 #
 def inserir_funcionario():
     matricula = int(input('\nMATRÍCULA DO FUNCIONÁRIO: '))
@@ -50,16 +49,14 @@ def inserir_funcionario():
     if (cod_funcao == 101): #VENDEDOR
         comissao = float(input('VOLUME DE VENDAS: '))
         fixo = 1500
-        desc_falta = (faltas * (fixo / 30))
-        bruto = (fixo + (comissao * 0.09)) - desc_falta
+        bruto = fixo + (comissao * 0.09)
     else: #ADMINISTRATIVO
         fixo = float(input('SALÁRIO FIXO DO FUNCIONÁRIO: '))
         if (fixo < 2150 or fixo > 6950):
             print('\n--->>> FAIXA SALARIAL INVÁLIDA <<<---')
             return
-        desc_falta = (faltas * (fixo / 30))
-        bruto = fixo - desc_falta
-    BD[matricula] = [nome, cod_funcao, faltas, bruto, desc_falta]
+        bruto = fixo
+    BD[matricula] = [nome, cod_funcao, faltas, bruto]
     print('\n--->>> FUNCIONARIO CADASTRADO <<<---')
 def remover_funcionario():
     matricula = int(input('\nMATRÍCULA DO FUNCIONÁRIO (DELETAR): '))
