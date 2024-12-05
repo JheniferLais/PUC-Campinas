@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="32x32" href="../assets/favicon.ico" type="image/x-icon">
+
+    <!-- Linkagem do style (.css) da pagina de wallet -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="wallet.css" media="screen" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Minha Carteira</title>
+</head>
+
+<body>
+<!-- Header do Site -->
+<header class="header">
+    <!-- Logo Wager -->
+    <div class="menu-icon">
+        <span>&#9776;</span> <!-- Ícone do menu (hambúrguer) -->
+        <div class="logo">
+            <img src="../assets/whitetextlogo.png" alt="Wager Logo" height="30">
+        </div>
+    </div>
+    <!-- Botões Voltar -->
+    <div class="header-right">
+        <a id="homeLink" style="text-decoration: none;">
+            <div class="balance">
+                <span class="wallet-icon">🏠</span> <!-- Ícone de carteira -->
+                <span>Voltar</span>
+            </div>
+        </a>
+    </div>
+</header>
+<div class="blur">
+
+</div>
+<div class="deposit-popup">
+    <div id="popUpDeposito" class="close-popup" onclick="closeDeposit()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+        </svg>
+    </div>
+    <div class="container py-4">
+
+        <!-- Formulário de adicionar fundos -->
+        <form id="formAddFunds">
+            <div class="mb-3">
+                <h3 class="text-center">Realizar Depósito</h3>
+            </div>
+
+            <div class="mb-3">
+                <label for="cardNumber" class="form-label">Cartão Fictício</label>
+                <input id="cardNumber" type="text" class="form-control" placeholder="EX: 1111.2222.3333.4444">
+            </div>
+
+            <div class="mb-3">
+                <label for="cvv" class="form-label">CCV</label>
+                <input id="cvv" type="text" class="form-control" placeholder="EX: 123">
+            </div>
+
+            <div class="mb-3">
+                <label for="validade" class="form-label">validade</label>
+                <input id="validade" type="text" class="form-control" placeholder="EX: mm/yy">
+            </div>
+
+            <div class="mb-3">
+                <label for="depositAmount" class="form-label">Valor de Depósito (R$)</label>
+                <input id="depositAmount" min="1" type="number" class="form-control" placeholder="EX: 100.00">
+            </div>
+            <button id="addFundsButton" type="submit" class="btn btn-primary w-100">Realizar Depósito</button>
+            <p class="feedbackAdicionado"></p>
+            <p class="feedbackNaoAdicionado"></p>
+        </form>
+    </div>
+</div>
+<div class="claim-popup">
+    <div id="popUpSaque" class="close-popup" onclick="closeClaim()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+        </svg>
+    </div>
+
+    <!-- Formulário de saque -->
+    <form id="formWithdrawFunds" class="container p-4">
+
+        <div class="mb-3">
+            <h2 class="text-center">Realizar Saque</h2>
+        </div>
+
+        <!-- Opções de saque -->
+        <div class="form-group mb-3">
+            <label class="text-white">Selecione o método:</label>
+            <div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="withdrawOption" id="optionAccount" value="account" onchange="updateDynamicForms()">
+                    <label class="form-check-label text-white" for="optionAccount">Ag./Conta Corrente</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="withdrawOption" id="optionPix" value="pix" onchange="updateDynamicForms()" checked>
+                    <label class="form-check-label text-white" for="optionPix">Chave PIX</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulário dinâmico -->
+        <div id="dynamicForm">
+            <!-- O conteúdo aqui será atualizado via JavaScript -->
+        </div>
+
+        <!-- Valor de saque -->
+        <div class="form-group mb-3">
+            <label for="withdrawAmount" class="text-white">Valor do Saque (R$)</label>
+            <input type="number" id="withdrawAmount" min="1" name="withdrawAmount" class="form-control" placeholder="Digite o valor do saque" required>
+        </div>
+
+        <!-- Botão para realizar saque -->
+        <button type="submit" class="btn btn-primary w-100">Realizar Saque</button>
+
+        <p class="feedbackNaoSacado"></p>
+        <p class="feedbackSacado"></p>
+    </form>
+</div>
+
+<!-- Imagem de fundo desfocado -->
+<img id="banner" src="../assets/banner.png">
+
+<!-- Sessão de Depositar e Sacar -->
+<div class="main">
+    <div class="balance-section">
+        <h2>Balance</h2>
+        <div class="balance-amount">
+            <b>Carregando...</b> <!-- Placeholder para o saldo dinâmico -->
+        </div>
+        <div class="buttons">
+            <button class="deposit-btn" onclick="openDeposit()">🏦 Depositar 🏦</button>
+            <button class="withdraw-btn" onclick="openClaim()">💸 Sacar 💸</button>
+        </div>
+    </div>
+
+    <!-- Lista de Historicos -->
+    <div class="history-container">
+        <!-- Lista de Historico de Transações Financeiras -->
+        <div class="transaction-history">
+            <h3>Histórico de Transações</h3>
+            <ul class="credit-list">
+
+                <!-- Lista será preenchida dinamicamente via JavaScript -->
+                <li>Carregando...</li> <!-- Placeholder inicial -->
+            </ul>
+        </div>
+
+        <!-- Lista de Historico de Apostas -->
+        <div class="bet-history">
+            <h3>Histórico de apostas</h3>
+            <ul class="bet-list">
+                <!-- Lista será preenchida dinamicamente via JavaScript -->
+                <li>Carregando...</li> <!-- Placeholder inicial -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Linkagem do script (.js) da pagina de wallet -->
+<script src="wallet.js"></script>
+</body>
+</html>
