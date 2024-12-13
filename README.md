@@ -1,30 +1,42 @@
-Este repositório reúne exemplos práticos, projetos e exercícios que demonstram os conhecimentos adquiridos ao longo do curso de Engenharia de Software da PUC-CAMPINAS.  
+# Software Engineering Repository - Puc-Campinas
 
+This repository gathers practical examples, projects, and exercises that demonstrate the knowledge acquired throughout 
+the Software Engineering course at PUC-CAMPINAS.
 
-### **Primeiro Semestre 2024.1**  
-- **Lógica de Programação**:  
-  Compreensão e aplicação de estruturas básicas, como condicionais e loops.  
-- **Manipulação de Dados**:  
-  Uso de variáveis, tipos de dados e operações matemáticas e lógicas.  
-- **Modelagem de Sistemas**:  
-  Introdução ao planejamento e organização de sistemas computacionais.  
-- **Desenvolvimento de Algoritmos**:  
-  Criação de soluções estruturadas para problemas computacionais.  
-- **Banco de Dados Relacional**:  
-  Noções iniciais sobre modelagem e manipulação de dados em sistemas relacionais.  
-- **Versionamento de Código**:  
-  Uso de **Git** e **GitHub** para controle de versão e colaboração.
-- **Ferramentas de Colaboração e Gestão de Projetos**:  
-  Uso do **Trello** para organização de tarefas e planejamento. 
+## ⏳ First Semester 2024.1
 
-### **Segundo Semestre 2024.2**  
-- **Desenvolvimento Web**:  
-  Criação e estilização de interfaces utilizando **HTML**, **CSS** e **JavaScript**.  
-- **Programação Back-End**:  
-  Uso de **Node.js** e **TypeScript** para construir APIs e sistemas escaláveis.  
-- **Banco de Dados Relacional**:  
-  Noções de integração de sistemas com bancos de dados relacional, criação de funções e procedures SQL
-- **Arquitetura de Sistemas**:  
-  Introdução à organização em camadas e boas práticas de desenvolvimento.  
-- **Testes e Documentação de APIs**:  
-  Teste e desenvolvimento de APIs RESTful utilizando **Postman**, com suporte a autenticação, headers e automação de testes.  
+### 🔹 Programming Logic:
+- Understanding and applying basic structures such as conditionals and loops.
+- Using variables, data types, and mathematical and logical operations.
+
+### 🔹 System Modeling:
+- Introduction to the planning and organization of computational systems.
+
+### 🔹 Algorithm Development:
+- Creating structured solutions for computational problems.
+
+### 🔹 Relational Database:
+- Initial concepts on modeling and manipulating data in relational systems.
+
+### 🔹 Code Versioning:
+- Using **Git** and **GitHub** for version control and collaboration.
+
+### 🔹 Collaboration and Project Management Tools:
+- Using **Trello** for task organization and planning.
+
+## ⏳ Second Semester 2024.2
+
+### 🔹 Web Development:
+- Creating and styling interfaces using **HTML**, **CSS**, and **JavaScript**.
+
+### 🔹 Back-End Programming:
+- Using **Node.js**, **TypeScript** and **Express.js** to build scalable APIs and systems.
+
+### 🔹 API Testing and Documentation:
+- Testing and developing RESTful APIs using **Postman**, with support for authentication, headers, and test automation.
+
+### 🔹 System Architecture:
+- Introduction to layered organization and best development practices.
+
+### 🔹 Relational Database:
+- Concepts of integrating systems with relational databases, creating functions, and SQL procedures.
