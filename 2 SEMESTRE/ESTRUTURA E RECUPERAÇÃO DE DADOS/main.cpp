@@ -8,16 +8,6 @@ using namespace std;
 
 Jhenifer Laís Barbosa...24014979
 
-Adicionei mais 2 funções...
-
- 1. A Função(printarArvore) de printar a estrutura
-    da arvore pois não ficou tão claro qual deveria
-    ser o formato da listagem dos contatos.
-
- 2. A Função(LiberarArvore) de liberar a arvore pois minha
-    IDE Clion sempre emite diversos warnings em
-    relação a vazamento de memoria.
-
 */
 
 // Estrutura para armazenar os contatos
