@@ -5,7 +5,7 @@ the Software Engineering course at PUC-CAMPINAS.
 
 ## ⏳ First Semester 2024.1
 
-### 🔹 Programming Logic:
+### 🔹 Programming Logic in Python:
 - Understanding and applying basic structures such as conditionals and loops.
 - Using variables, data types, and mathematical and logical operations.
 
@@ -24,7 +24,17 @@ the Software Engineering course at PUC-CAMPINAS.
 ### 🔹 Collaboration and Project Management Tools:
 - Using **Trello** for task organization and planning.
 
+### 🔹 Arduino Programming:
+- Introduction to C/C++ programming for microcontrollers.
+- Configuring line sensors (IR) and motors.
+- Basic structures: conditionals and loops to control the car’s movement.
+
 ## ⏳ Second Semester 2024.2
+
+### 🔹 Data Structures in C:
+- Understanding pointers, memory allocation, and structs.
+- Implementing arrays, linked lists, stacks, and queues.
+- Introduction to trees, binary search trees, and graph traversal.
 
 ### 🔹 Web Development:
 - Creating and styling interfaces using **HTML**, **CSS**, and **JavaScript**.
